@@ -9,12 +9,12 @@ import morgan from "morgan";
 import serverless from "serverless-http";
 
 const app = express();
-app.use(
-  cors({
-    origin: "https://apirestmtweb.netlify.app",
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: "https://apirestmtweb.netlify.app",
+//     credentials: true,
+//   })
+// );
 // Middlewares globales
 app.use(cookieParser());
 app.use(helmet());
