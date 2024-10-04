@@ -6,9 +6,11 @@ import cookieParser from "cookie-parser";
 import router from "./routes/index.js";
 import { handleErrors } from "./utils/handleErrors.js";
 import morgan from "morgan";
+import dotenv from "dotenv";
+dotenv.config();
 
 const app = express();
-app.use(cors())
+app.use(cors());
 // app.use(
 //   cors({
 //     origin: "https://apirestmtweb.netlify.app",
