@@ -7,8 +7,9 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "./db"
+  provider      = "prisma-client-js"
+  output        = "./db"
+  binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 // Model for a product

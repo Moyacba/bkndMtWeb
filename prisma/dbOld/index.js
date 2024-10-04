@@ -160,6 +160,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -186,8 +190,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// prisma/schema.prisma\n\ndatasource dbOld {\n  provider = \"mongodb\"\n  url      = env(\"DATABASE_URL_OLD\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./dbOld\"\n}\n\nmodel servicios {\n  id          String    @id @default(auto()) @map(\"_id\") @dbOld.ObjectId\n  cliente     String?\n  telefono1   String?\n  telefono2   String?\n  obsCliente  String?\n  categoria   String?\n  marca       String?\n  motivo      String?\n  total       Float?\n  pagos       Json?\n  obsProducto String?\n  contrasenia Json?\n  sim         String?\n  sd          String?\n  acc         Json?\n  dato1       Json?\n  dato2       Json?\n  dato3       Json?\n  estado      String?\n  obsTecnico  String?\n  fechaEstado Json?\n  fechaIn     DateTime?\n  fechaOut    DateTime?\n}\n\nmodel productos {\n  id           String  @id @default(auto()) @map(\"_id\") @dbOld.ObjectId\n  codigo       Int?\n  categoria    String?\n  producto     String?\n  precioCompra Float?\n  precioVenta  Json?\n  stock        Json?\n  proveedor    String?\n  detalles     String?\n  atributos    Json?\n}\n",
-  "inlineSchemaHash": "b6b2ba864648bcbb46b41c0f7d045f221c2d402bcf872e00ba9e8619784ba091",
+  "inlineSchema": "// prisma/schema.prisma\n\ndatasource dbOld {\n  provider = \"mongodb\"\n  url      = env(\"DATABASE_URL_OLD\")\n}\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"./dbOld\"\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\"]\n}\n\nmodel servicios {\n  id          String    @id @default(auto()) @map(\"_id\") @dbOld.ObjectId\n  cliente     String?\n  telefono1   String?\n  telefono2   String?\n  obsCliente  String?\n  categoria   String?\n  marca       String?\n  motivo      String?\n  total       Float?\n  pagos       Json?\n  obsProducto String?\n  contrasenia Json?\n  sim         String?\n  sd          String?\n  acc         Json?\n  dato1       Json?\n  dato2       Json?\n  dato3       Json?\n  estado      String?\n  obsTecnico  String?\n  fechaEstado Json?\n  fechaIn     DateTime?\n  fechaOut    DateTime?\n}\n\nmodel productos {\n  id           String  @id @default(auto()) @map(\"_id\") @dbOld.ObjectId\n  codigo       Int?\n  categoria    String?\n  producto     String?\n  precioCompra Float?\n  precioVenta  Json?\n  stock        Json?\n  proveedor    String?\n  detalles     String?\n  atributos    Json?\n}\n",
+  "inlineSchemaHash": "3382051806513431fc47d0d93a6f11f4fd3c31aa3d2b8520c2685326669bcbdc",
   "copyEngine": true
 }
 
@@ -227,6 +231,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "prisma/dbOld/query_engine-windows.dll.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
+path.join(process.cwd(), "prisma/dbOld/libquery_engine-debian-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/dbOld/schema.prisma")

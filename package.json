@@ -8,7 +8,7 @@
     "start": "nodemon --experimental-modules src/app.js",
     "generate:db": "prisma generate --schema=./prisma/schema.prisma",
     "generate:dbOld": "prisma generate --schema=./prisma/schemaOld.prisma",
-    "build": "npm run generate:db && npm run generate:dbOld"
+    "build": "pnpm run generate:db && pnpm run generate:dbOld"
   },
   "keywords": [],
   "author": "",

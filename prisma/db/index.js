@@ -214,6 +214,10 @@ const config = {
         "fromEnvVar": null,
         "value": "windows",
         "native": true
+      },
+      {
+        "fromEnvVar": null,
+        "value": "debian-openssl-3.0.x"
       }
     ],
     "previewFeatures": [],
@@ -240,8 +244,8 @@ const config = {
       }
     }
   },
-  "inlineSchema": "// schema.prisma\n\n// Configure the datasource to connect to MongoDB\ndatasource db {\n  provider = \"mongodb\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider = \"prisma-client-js\"\n  output   = \"./db\"\n}\n\n// Model for a product\nmodel Product {\n  id             String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  sku            String\n  name           String\n  description    String\n  category       String\n  brand          String\n  provider       String\n  costPrice      Float\n  salePrice      Float\n  promoPrice     Float\n  percentPrice   Float\n  stock          Int\n  images         String[]\n  specifications Json?\n}\n\n// Model for a customer\nmodel Customer {\n  id              String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  firstName       String\n  lastName        String\n  email           String   @unique\n  password        String\n  address         Json\n  phone           String\n  purchaseHistory String[]\n  serviceHistory  String[]\n}\n\n// Model for a sale\nmodel Sale {\n  id         String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  customerId String\n  details    String\n  date       DateTime\n  products   Json\n  total      Float\n  discount   Float\n  payments   Json\n}\n\nmodel Expense {\n  id         String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  product    String\n  details    String?\n  amount     Float\n  method     String?\n  date       DateTime\n  category   String?\n  categoryId Int?\n}\n\n// Model for a cashflow\nmodel Cashflow {\n  id              String    @id @default(auto()) @map(\"_id\") @db.ObjectId\n  active          Boolean\n  openDate        DateTime\n  closeDate       DateTime?\n  openingBalance  Float\n  total           Float\n  expenses        Float\n  cashSales       Float\n  cashServices    Float\n  digitalSales    Float\n  digitalServices Float\n  observations    String\n}\n\nmodel User {\n  id       String  @id @default(auto()) @map(\"_id\") @db.ObjectId\n  username String?\n  email    String  @unique\n  password String\n  avatar   String?\n  sucursal String?\n}\n\ntype PaymentMethod {\n  amount Float\n  method String\n}\n\nmodel Service {\n  id       String    @id @default(auto()) @map(\"_id\") @db.ObjectId\n  device   Json\n  client   Json\n  state    String\n  repair   String\n  total    Float\n  date     DateTime\n  dateOut  DateTime?\n  payments Json?\n  discount Float?\n}\n",
-  "inlineSchemaHash": "2291c0cda7ef9d00b8d4c6a236b59d378f190c58f4fade73d2b38e7ceab1a36b",
+  "inlineSchema": "// schema.prisma\n\n// Configure the datasource to connect to MongoDB\ndatasource db {\n  provider = \"mongodb\"\n  url      = env(\"DATABASE_URL\")\n}\n\ngenerator client {\n  provider      = \"prisma-client-js\"\n  output        = \"./db\"\n  binaryTargets = [\"native\", \"debian-openssl-3.0.x\"]\n}\n\n// Model for a product\nmodel Product {\n  id             String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  sku            String\n  name           String\n  description    String\n  category       String\n  brand          String\n  provider       String\n  costPrice      Float\n  salePrice      Float\n  promoPrice     Float\n  percentPrice   Float\n  stock          Int\n  images         String[]\n  specifications Json?\n}\n\n// Model for a customer\nmodel Customer {\n  id              String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  firstName       String\n  lastName        String\n  email           String   @unique\n  password        String\n  address         Json\n  phone           String\n  purchaseHistory String[]\n  serviceHistory  String[]\n}\n\n// Model for a sale\nmodel Sale {\n  id         String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  customerId String\n  details    String\n  date       DateTime\n  products   Json\n  total      Float\n  discount   Float\n  payments   Json\n}\n\nmodel Expense {\n  id         String   @id @default(auto()) @map(\"_id\") @db.ObjectId\n  product    String\n  details    String?\n  amount     Float\n  method     String?\n  date       DateTime\n  category   String?\n  categoryId Int?\n}\n\n// Model for a cashflow\nmodel Cashflow {\n  id              String    @id @default(auto()) @map(\"_id\") @db.ObjectId\n  active          Boolean\n  openDate        DateTime\n  closeDate       DateTime?\n  openingBalance  Float\n  total           Float\n  expenses        Float\n  cashSales       Float\n  cashServices    Float\n  digitalSales    Float\n  digitalServices Float\n  observations    String\n}\n\nmodel User {\n  id       String  @id @default(auto()) @map(\"_id\") @db.ObjectId\n  username String?\n  email    String  @unique\n  password String\n  avatar   String?\n  sucursal String?\n}\n\ntype PaymentMethod {\n  amount Float\n  method String\n}\n\nmodel Service {\n  id       String    @id @default(auto()) @map(\"_id\") @db.ObjectId\n  device   Json\n  client   Json\n  state    String\n  repair   String\n  total    Float\n  date     DateTime\n  dateOut  DateTime?\n  payments Json?\n  discount Float?\n}\n",
+  "inlineSchemaHash": "3413c6f39ae6242e679df706a774f062e99df3bd6e03716637d824afdb0757dd",
   "copyEngine": true
 }
 
@@ -281,6 +285,10 @@ Object.assign(exports, Prisma)
 // file annotations for bundling tools to include these files
 path.join(__dirname, "query_engine-windows.dll.node");
 path.join(process.cwd(), "prisma/db/query_engine-windows.dll.node")
+
+// file annotations for bundling tools to include these files
+path.join(__dirname, "libquery_engine-debian-openssl-3.0.x.so.node");
+path.join(process.cwd(), "prisma/db/libquery_engine-debian-openssl-3.0.x.so.node")
 // file annotations for bundling tools to include these files
 path.join(__dirname, "schema.prisma");
 path.join(process.cwd(), "prisma/db/schema.prisma")
