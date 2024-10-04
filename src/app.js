@@ -10,13 +10,13 @@ import dotenv from "dotenv";
 dotenv.config();
 
 const app = express();
-app.use(cors());
-// app.use(
-//   cors({
-//     origin: "https://bkndmtweb.onrender.com",
-//     credentials: true,
-//   })
-// );
+// app.use(cors());
+app.use(
+  cors({
+    origin: "http://localhost:5173/",
+    credentials: true,
+  })
+);
 // Middlewares globales
 app.use(cookieParser());
 app.use(helmet());
