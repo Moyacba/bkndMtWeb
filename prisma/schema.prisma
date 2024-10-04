@@ -1,0 +1,109 @@
+// schema.prisma
+
+// Configure the datasource to connect to MongoDB
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "./db"
+}
+
+// Model for a product
+model Product {
+  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  sku            String
+  name           String
+  description    String
+  category       String
+  brand          String
+  provider       String
+  costPrice      Float
+  salePrice      Float
+  promoPrice     Float
+  percentPrice   Float
+  stock          Int
+  images         String[]
+  specifications Json?
+}
+
+// Model for a customer
+model Customer {
+  id              String   @id @default(auto()) @map("_id") @db.ObjectId
+  firstName       String
+  lastName        String
+  email           String   @unique
+  password        String
+  address         Json
+  phone           String
+  purchaseHistory String[]
+  serviceHistory  String[]
+}
+
+// Model for a sale
+model Sale {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  customerId String
+  details    String
+  date       DateTime
+  products   Json
+  total      Float
+  discount   Float
+  payments   Json
+}
+
+model Expense {
+  id         String   @id @default(auto()) @map("_id") @db.ObjectId
+  product    String
+  details    String?
+  amount     Float
+  method     String?
+  date       DateTime
+  category   String?
+  categoryId Int?
+}
+
+// Model for a cashflow
+model Cashflow {
+  id              String    @id @default(auto()) @map("_id") @db.ObjectId
+  active          Boolean
+  openDate        DateTime
+  closeDate       DateTime?
+  openingBalance  Float
+  total           Float
+  expenses        Float
+  cashSales       Float
+  cashServices    Float
+  digitalSales    Float
+  digitalServices Float
+  observations    String
+}
+
+model User {
+  id       String  @id @default(auto()) @map("_id") @db.ObjectId
+  username String?
+  email    String  @unique
+  password String
+  avatar   String?
+  sucursal String?
+}
+
+type PaymentMethod {
+  amount Float
+  method String
+}
+
+model Service {
+  id       String    @id @default(auto()) @map("_id") @db.ObjectId
+  device   Json
+  client   Json
+  state    String
+  repair   String
+  total    Float
+  date     DateTime
+  dateOut  DateTime?
+  payments Json?
+  discount Float?
+}
