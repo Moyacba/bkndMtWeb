@@ -5,8 +5,8 @@ import cors from "cors";
 import cookieParser from "cookie-parser";
 import router from "./routes/index.js";
 import { handleErrors } from "./utils/handleErrors.js";
-import morgan from "morgan"
-import serverless from 'serverless-http';
+import morgan from "morgan";
+import serverless from "serverless-http";
 
 const app = express();
 app.use(
@@ -20,7 +20,7 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(express.json());
 
-app.use(morgan("dev"))
+app.use(morgan("dev"));
 
 // Rutas
 app.use("/api", router);
@@ -38,4 +38,7 @@ app.use(handleErrors);
 
 const handler = serverless(app);
 
-export default handler 
+export default handler = async (event, context) => {
+  const result = await handler(event, context);
+  return result;
+};
