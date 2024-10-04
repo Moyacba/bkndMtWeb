@@ -36,9 +36,9 @@ app.use(handleErrors);
 
 // export default app;
 
-const handler = serverless(app);
+const handlerServerless = serverless(app);
 
-export default handler = async (event, context) => {
-  const result = await handler(event, context);
+export const handler = async (event, context) => {
+  const result = await handlerServerless(event, context);
   return result;
 };
