@@ -24,6 +24,11 @@ app.use(morgan("dev"));
 
 // Rutas
 app.use("/api", router);
+
+app.get("/example", (req, res) => {
+  res.stauts(200).json({ message: "Example" })
+})
+
 // app.use("/users", userRoutes);
 
 // Middleware para manejar errores
