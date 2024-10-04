@@ -6,9 +6,9 @@ import cookieParser from "cookie-parser";
 import router from "./routes/index.js";
 import { handleErrors } from "./utils/handleErrors.js";
 import morgan from "morgan";
-import serverless from "serverless-http";
 
 const app = express();
+app.use(cors())
 // app.use(
 //   cors({
 //     origin: "https://apirestmtweb.netlify.app",
@@ -26,24 +26,17 @@ app.use(morgan("dev"));
 app.use("/api", router);
 
 app.get("/example", (req, res) => {
-  res.stauts(200).json({ message: "Example" })
-})
+  res.stauts(200).json({ message: "Example" });
+});
 
 // app.use("/users", userRoutes);
 
 // Middleware para manejar errores
 app.use(handleErrors);
 
-// const PORT = process.env.PORT || 3000;
-// app.listen(PORT, () => {
-//   console.log(`Servidor corriendo en el puerto ${PORT}`);
-// });
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Servidor corriendo en el puerto ${PORT}`);
+});
 
-// export default app;
-
-const handlerServerless = serverless(app);
-
-export const handler = async (event, context) => {
-  const result = await handlerServerless(event, context);
-  return result;
-};
+export default app;

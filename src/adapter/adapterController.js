@@ -17,9 +17,8 @@ export const getOldServices = async (req, res) => {
     });
 
     res.status(200).json(services);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error fetching services ", error });
+  } catch (err) { 
+    res.status(500).json({ error: "Error fetching services ", err });
   }
 };
 
@@ -37,8 +36,7 @@ export const getOldProducts = async (req, res) => {
     });
 
     res.status(200).json(products);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ error: "Error fetching products ", error });
+  } catch (err) {
+    res.status(500).json({ error: "Error fetching products ", err });
   }
 };
