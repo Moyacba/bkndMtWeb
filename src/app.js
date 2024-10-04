@@ -11,7 +11,7 @@ import serverless from 'serverless-http';
 const app = express();
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "https://apirestmtweb.netlify.app",
     credentials: true,
   })
 );
