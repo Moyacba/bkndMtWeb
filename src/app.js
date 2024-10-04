@@ -6,7 +6,7 @@ import cookieParser from "cookie-parser";
 import router from "./routes/index.js";
 import { handleErrors } from "./utils/handleErrors.js";
 import morgan from "morgan"
-const serverless = require('serverless-http');
+import serverless from 'serverless-http';
 
 const app = express();
 app.use(
@@ -36,4 +36,6 @@ app.listen(PORT, () => {
 
 // export default app;
 
-module.exports.handler = serverless(app);
+const handler = serverless(app);
+
+export default handler 
