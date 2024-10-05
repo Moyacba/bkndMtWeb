@@ -6,8 +6,8 @@ datasource dbOld {
 }
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "./dbOld"
+  provider      = "prisma-client-js"
+  output        = "./dbOld"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
@@ -35,6 +35,8 @@ model servicios {
   fechaEstado Json?
   fechaIn     DateTime?
   fechaOut    DateTime?
+
+  @@index([cliente, telefono1, marca], map: "old_service_search_index")
 }
 
 model productos {
@@ -48,4 +50,6 @@ model productos {
   proveedor    String?
   detalles     String?
   atributos    Json?
+
+  @@index([producto], map: "old_product_search_index")
 }

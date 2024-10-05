@@ -3465,7 +3465,7 @@ export namespace Prisma {
     products: JsonValue
     total: number
     discount: number
-    payments: JsonValue
+    payments: JsonValue | null
     _count: SaleCountAggregateOutputType | null
     _avg: SaleAvgAggregateOutputType | null
     _sum: SaleSumAggregateOutputType | null
@@ -3522,7 +3522,7 @@ export namespace Prisma {
       products: Prisma.JsonValue
       total: number
       discount: number
-      payments: Prisma.JsonValue
+      payments: Prisma.JsonValue | null
     }, ExtArgs["result"]["sale"]>
     composites: {}
   }
@@ -8438,7 +8438,7 @@ export namespace Prisma {
     products?: JsonFilter<"Sale">
     total?: FloatFilter<"Sale"> | number
     discount?: FloatFilter<"Sale"> | number
-    payments?: JsonFilter<"Sale">
+    payments?: JsonNullableFilter<"Sale">
   }
 
   export type SaleOrderByWithRelationInput = {
@@ -8463,7 +8463,7 @@ export namespace Prisma {
     products?: JsonFilter<"Sale">
     total?: FloatFilter<"Sale"> | number
     discount?: FloatFilter<"Sale"> | number
-    payments?: JsonFilter<"Sale">
+    payments?: JsonNullableFilter<"Sale">
   }, "id">
 
   export type SaleOrderByWithAggregationInput = {
@@ -8493,7 +8493,7 @@ export namespace Prisma {
     products?: JsonWithAggregatesFilter<"Sale">
     total?: FloatWithAggregatesFilter<"Sale"> | number
     discount?: FloatWithAggregatesFilter<"Sale"> | number
-    payments?: JsonWithAggregatesFilter<"Sale">
+    payments?: JsonNullableWithAggregatesFilter<"Sale">
   }
 
   export type ExpenseWhereInput = {
@@ -8993,7 +8993,7 @@ export namespace Prisma {
     products: InputJsonValue
     total: number
     discount: number
-    payments: InputJsonValue
+    payments?: InputJsonValue | null
   }
 
   export type SaleUncheckedCreateInput = {
@@ -9004,7 +9004,7 @@ export namespace Prisma {
     products: InputJsonValue
     total: number
     discount: number
-    payments: InputJsonValue
+    payments?: InputJsonValue | null
   }
 
   export type SaleUpdateInput = {
@@ -9014,7 +9014,7 @@ export namespace Prisma {
     products?: InputJsonValue | InputJsonValue
     total?: FloatFieldUpdateOperationsInput | number
     discount?: FloatFieldUpdateOperationsInput | number
-    payments?: InputJsonValue | InputJsonValue
+    payments?: InputJsonValue | InputJsonValue | null
   }
 
   export type SaleUncheckedUpdateInput = {
@@ -9024,7 +9024,7 @@ export namespace Prisma {
     products?: InputJsonValue | InputJsonValue
     total?: FloatFieldUpdateOperationsInput | number
     discount?: FloatFieldUpdateOperationsInput | number
-    payments?: InputJsonValue | InputJsonValue
+    payments?: InputJsonValue | InputJsonValue | null
   }
 
   export type SaleCreateManyInput = {
@@ -9035,7 +9035,7 @@ export namespace Prisma {
     products: InputJsonValue
     total: number
     discount: number
-    payments: InputJsonValue
+    payments?: InputJsonValue | null
   }
 
   export type SaleUpdateManyMutationInput = {
@@ -9045,7 +9045,7 @@ export namespace Prisma {
     products?: InputJsonValue | InputJsonValue
     total?: FloatFieldUpdateOperationsInput | number
     discount?: FloatFieldUpdateOperationsInput | number
-    payments?: InputJsonValue | InputJsonValue
+    payments?: InputJsonValue | InputJsonValue | null
   }
 
   export type SaleUncheckedUpdateManyInput = {
@@ -9055,7 +9055,7 @@ export namespace Prisma {
     products?: InputJsonValue | InputJsonValue
     total?: FloatFieldUpdateOperationsInput | number
     discount?: FloatFieldUpdateOperationsInput | number
-    payments?: InputJsonValue | InputJsonValue
+    payments?: InputJsonValue | InputJsonValue | null
   }
 
   export type ExpenseCreateInput = {

@@ -24,24 +24,43 @@ export const getServiceById = async (req, res) => {
     }
     res.status(201).json(service);
   } catch (error) {
-    res.status(501).json({ error: "Error fetching service" });
+    res.status(501).json({ error: "Error fetchings service" });
+  }
+};
+
+export const getServiceByQuery = async (req, res) => {
+  const { keyword } = req.query;
+  if (!keyword) {
+    return res.status(400).json({ message: "Falta el parámetro de búsqueda" });
+  }
+
+  try {
+    const resultados = await prisma.service.aggregateRaw({
+      pipeline: [
+        {
+          $match: {
+            $or: [
+              { "device.model": { $regex: keyword, $options: "i" } },
+              { "client.name": { $regex: keyword, $options: "i" } },
+              { "client.phone1": { $regex: keyword, $options: "i" } },
+              { "client.phone2": { $regex: keyword, $options: "i" } },
+            ],
+          },
+        },
+      ],
+    });
+
+    res.json(resultados);
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: "Error en la búsqueda" });
   }
 };
 
 // Crear un nuevo servicio
 export const createService = async (req, res) => {
-  const {
-    device,
-    client,
-    state,
-    repair,
-    total,
-    dateIn,
-    dateOut,
-    payments,
-    discount,
-  } = req.body;
-
+  const { device, client, state, repair, total, date, payments, discount } =
+    req.body;
   try {
     const newService = await prisma.service.create({
       data: {
@@ -50,15 +69,15 @@ export const createService = async (req, res) => {
         state,
         repair,
         total,
-        dateIn,
-        dateOut,
+        date,
         payments,
         discount,
       },
     });
     res.status(201).json(newService);
-  } catch (error) {
-    res.status(501).json({ error: "Error creating service" });
+  } catch (err) {
+    console.log(err);
+    res.status(501).json({ error: "Error creating service ", err });
   }
 };
 

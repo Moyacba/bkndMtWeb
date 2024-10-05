@@ -7,12 +7,11 @@ import {
   updateSale,
   deleteSale,
 } from "../controllers/saleController.js";
-import { verifyToken } from "../middlewares/auth.js";
 
 const router = express.Router();
 
 // Obtener todas las ventas
-router.get("/", verifyToken, getSales);
+router.get("/", getSales);
 
 // Obtener una venta por ID
 router.get("/:id", getSaleById);

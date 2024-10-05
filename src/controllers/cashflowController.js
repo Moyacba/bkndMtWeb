@@ -46,9 +46,12 @@ const paymentManager = async (cashflowId, payments, transactionType) => {
 // Obtener todos los cashflows
 export const getCashflows = async (req, res) => {
   try {
-    const cashflows = await prisma.cashflow.findMany();
+    const cashflows = await prisma.cashflow.findMany({
+      orderBy: { openDate: "desc" },
+    });
     res.status(200).json(cashflows);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Error fetching cashflows" });
   }
 };
@@ -173,12 +176,21 @@ export const updateCashflow = async (req, res) => {
 export const closeCashflow = async (req, res) => {
   const { id } = req.params;
   try {
+    const cashflow = await prisma.cashflow.findUnique({ where: { id } });
     await prisma.cashflow.update({
       where: { id },
-      data: { active: false },
+      data: {
+        active: false,
+        total:
+          cashflow.cashSales +
+          cashflow.cashServices +
+          cashflow.digitalSales +
+          cashflow.digitalServices,
+      },
     });
     return res.status(204).send(); // No content
   } catch (error) {
+    console.log(error);
     if (error.code === "P2025") {
       // Cashflow not found
       return res.status(404).json({ error: "Cashflow not found" });

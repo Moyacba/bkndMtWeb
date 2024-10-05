@@ -17,8 +17,36 @@ export const getOldServices = async (req, res) => {
     });
 
     res.status(200).json(services);
-  } catch (err) { 
+  } catch (err) {
     res.status(500).json({ error: "Error fetching services ", err });
+  }
+};
+
+export const getOldServiceByQuery = async (req, res) => {
+  const { keyword } = req.query;
+  if (!keyword) {
+    return res.status(400).json({ message: "Falta el parámetro de búsqueda" });
+  }
+
+  try {
+    const resultados = await prisma.servicios.aggregateRaw({
+      pipeline: [
+        {
+          $match: {
+            $or: [
+              { marca: { $regex: keyword, $options: "i" } },
+              { cliente: { $regex: keyword, $options: "i" } },
+              { telefono1: { $regex: keyword, $options: "i" } },
+              { telefono2: { $regex: keyword, $options: "i" } },
+            ],
+          },
+        },
+      ],
+    });
+
+    res.json(resultados);
+  } catch (error) {
+    res.status(500).json({ message: "Error en la búsqueda" });
   }
 };
 
