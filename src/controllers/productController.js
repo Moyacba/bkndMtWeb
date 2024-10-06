@@ -8,27 +8,46 @@ export const getProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const keyword = req.query.keyword || "";
     let products;
+    console.log(keyword);
+    console.log((keyword).split(" ")[0].length);
 
     if (keyword !== "") {
-      products = await prisma.product.aggregateRaw({
-        pipeline: [
-          {
-            $match: {
-              $or: [{ name: { $regex: `.*${keyword}.*`, $options: "i" } }],
+      if ((keyword).split(" ").length > 1) {
+        products = await prisma.product.aggregateRaw({
+          pipeline: [
+            {
+              $match: {
+                $or: [
+                  {
+                    name: {
+                      $regex: `.*${(keyword).split(" ")[0]}.*`,
+                      $options: "i",
+                    },
+                  },
+                ],
+                $or: [
+                  {
+                    name: {
+                      $regex: `.*${(keyword).split(" ")[0]}.*`,
+                      $options: "i",
+                    },
+                  },
+                ],
+              },
             },
-          },
-          // {
-          //   $project: {
-          //     score: { $meta: "textScore" },
-          //   },
-          // },
-          // {
-          //   $sort: {
-          //     score: { $meta: "textScore" },
-          //   },
-          // },
-        ],
-      });
+          ],
+        });
+      } else {
+        products = await prisma.product.aggregateRaw({
+          pipeline: [
+            {
+              $match: {
+                $or: [{ name: { $regex: `.*${keyword}.*`, $options: "i" } }],
+              },
+            },
+          ],
+        });
+      }
     } else {
       products = await prisma.product.findMany({
         skip: (page - 1) * pageSize,

@@ -61,6 +61,14 @@ export const createSale = async (req, res) => {
         paymentMethod,
       },
     });
+    products.map(async (product) => {
+      await prisma.product.update({
+        where: { id: product.id },
+        data: {
+          stock: { decrement: 1 },
+        },
+      });
+    });
     res.status(201).json(newSale);
   } catch (error) {
     res.status(500).json({ error: "Error creating sale" });
