@@ -151,7 +151,10 @@ exports.Prisma.ProductosScalarFieldEnum = {
   stock: 'stock',
   proveedor: 'proveedor',
   detalles: 'detalles',
-  atributos: 'atributos'
+  atributos: 'atributos',
+  img: 'img',
+  fechaPrecioVenta: 'fechaPrecioVenta',
+  fecha: 'fecha'
 };
 
 exports.Prisma.SortOrder = {

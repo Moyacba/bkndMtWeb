@@ -4,9 +4,19 @@ const prisma = new PrismaClient();
 // Obtener todos los gastos
 export const getExpenses = async (req, res) => {
   try {
-    const expenses = await prisma.expense.findMany();
+    const pageSize = 10;
+    const page = parseInt(req.query.page) || 1;
+
+    const expenses = await prisma.expense.findMany({
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+      orderBy: {
+        date: "desc",
+      },
+    });
+
     res.status(200).json(expenses);
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({ error: "Error fetching expenses" });
   }
 };

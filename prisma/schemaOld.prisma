@@ -40,16 +40,19 @@ model servicios {
 }
 
 model productos {
-  id           String  @id @default(auto()) @map("_id") @dbOld.ObjectId
-  codigo       Int?
-  categoria    String?
-  producto     String?
-  precioCompra Float?
-  precioVenta  Json?
-  stock        Json?
-  proveedor    String?
-  detalles     String?
-  atributos    Json?
+  id               String    @id @default(auto()) @map("_id") @dbOld.ObjectId
+  codigo           Int?
+  categoria        String?
+  producto         String?
+  precioCompra     Float?
+  precioVenta      Json?
+  stock            Json?
+  proveedor        String?
+  detalles         String?
+  atributos        Json?
+  img              String?
+  fechaPrecioVenta String?
+  fecha            DateTime?
 
   @@index([producto], map: "old_product_search_index")
 }

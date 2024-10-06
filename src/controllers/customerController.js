@@ -4,9 +4,19 @@ const prisma = new PrismaClient();
 // Obtener todos los clientes
 export const getCustomers = async (req, res) => {
   try {
-    const customers = await prisma.customer.findMany();
+    const pageSize = 10;
+    const page = parseInt(req.query.page) || 1;
+
+    const customers = await prisma.customer.findMany({
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+      orderBy: {
+        phone: "desc",
+      },
+    });
+
     res.status(200).json(customers);
-  } catch (error) {
+  } catch (err) {
     res.status(500).json({ error: "Error fetching customers" });
   }
 };

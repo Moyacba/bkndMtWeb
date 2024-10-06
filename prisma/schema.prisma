@@ -7,14 +7,15 @@ datasource db {
 }
 
 generator client {
-  provider = "prisma-client-js"
-  output   = "./db"
+  provider      = "prisma-client-js"
+  output        = "./db"
   binaryTargets = ["native", "debian-openssl-3.0.x"]
 }
 
 // Model for a product
 model Product {
-  id             String   @id @default(auto()) @map("_id") @db.ObjectId
+  id             String    @id @default(auto()) @map("_id") @db.ObjectId
+  barcode        String?
   sku            String
   name           String
   description    String
@@ -28,7 +29,9 @@ model Product {
   stock          Int
   images         String[]
   specifications Json?
-  
+  createdAt      DateTime?
+  updatedAt      DateTime?
+
   @@index([brand, name], map: "product_search_index")
 }
 
@@ -109,6 +112,6 @@ model Service {
   dateOut  DateTime?
   payments Json?
   discount Float?
-  
+
   @@index([client, device], map: "service_search_index")
 }

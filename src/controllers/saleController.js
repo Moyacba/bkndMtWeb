@@ -4,10 +4,19 @@ const prisma = new PrismaClient();
 // Obtener todas las ventas
 export const getSales = async (req, res) => {
   try {
-    const sales = await prisma.sale.findMany();
+    const pageSize = 10;
+    const page = parseInt(req.query.page) || 1;
+
+    const sales = await prisma.sale.findMany({
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+      orderBy: {
+        date: "desc",
+      },
+    });
+
     res.status(200).json(sales);
-  } catch (error) {
-    console.log(error)
+  } catch (err) {
     res.status(500).json({ error: "Error fetching sales" });
   }
 };

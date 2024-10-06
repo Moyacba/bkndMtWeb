@@ -56,15 +56,17 @@ export const getOldProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
 
     const products = await prisma.productos.findMany({
-      skip: (page - 1) * pageSize,
-      take: pageSize,
-      orderBy: {
-        codigo: "desc",
-      },
+      where: { fecha: { gte: new Date(2022, 1, 1) } },
+      // skip: (page - 1) * pageSize,
+      // take: pageSize,
+      // orderBy: {
+      //   codigo: "desc",
+      // },
     });
 
     res.status(200).json(products);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: "Error fetching products ", err });
   }
 };

@@ -2007,6 +2007,9 @@ export namespace Prisma {
     precioCompra: number | null
     proveedor: string | null
     detalles: string | null
+    img: string | null
+    fechaPrecioVenta: string | null
+    fecha: Date | null
   }
 
   export type ProductosMaxAggregateOutputType = {
@@ -2017,6 +2020,9 @@ export namespace Prisma {
     precioCompra: number | null
     proveedor: string | null
     detalles: string | null
+    img: string | null
+    fechaPrecioVenta: string | null
+    fecha: Date | null
   }
 
   export type ProductosCountAggregateOutputType = {
@@ -2030,6 +2036,9 @@ export namespace Prisma {
     proveedor: number
     detalles: number
     atributos: number
+    img: number
+    fechaPrecioVenta: number
+    fecha: number
     _all: number
   }
 
@@ -2052,6 +2061,9 @@ export namespace Prisma {
     precioCompra?: true
     proveedor?: true
     detalles?: true
+    img?: true
+    fechaPrecioVenta?: true
+    fecha?: true
   }
 
   export type ProductosMaxAggregateInputType = {
@@ -2062,6 +2074,9 @@ export namespace Prisma {
     precioCompra?: true
     proveedor?: true
     detalles?: true
+    img?: true
+    fechaPrecioVenta?: true
+    fecha?: true
   }
 
   export type ProductosCountAggregateInputType = {
@@ -2075,6 +2090,9 @@ export namespace Prisma {
     proveedor?: true
     detalles?: true
     atributos?: true
+    img?: true
+    fechaPrecioVenta?: true
+    fecha?: true
     _all?: true
   }
 
@@ -2175,6 +2193,9 @@ export namespace Prisma {
     proveedor: string | null
     detalles: string | null
     atributos: JsonValue | null
+    img: string | null
+    fechaPrecioVenta: string | null
+    fecha: Date | null
     _count: ProductosCountAggregateOutputType | null
     _avg: ProductosAvgAggregateOutputType | null
     _sum: ProductosSumAggregateOutputType | null
@@ -2207,6 +2228,9 @@ export namespace Prisma {
     proveedor?: boolean
     detalles?: boolean
     atributos?: boolean
+    img?: boolean
+    fechaPrecioVenta?: boolean
+    fecha?: boolean
   }, ExtArgs["result"]["productos"]>
 
 
@@ -2221,6 +2245,9 @@ export namespace Prisma {
     proveedor?: boolean
     detalles?: boolean
     atributos?: boolean
+    img?: boolean
+    fechaPrecioVenta?: boolean
+    fecha?: boolean
   }
 
 
@@ -2238,6 +2265,9 @@ export namespace Prisma {
       proveedor: string | null
       detalles: string | null
       atributos: Prisma.JsonValue | null
+      img: string | null
+      fechaPrecioVenta: string | null
+      fecha: Date | null
     }, ExtArgs["result"]["productos"]>
     composites: {}
   }
@@ -2640,6 +2670,9 @@ export namespace Prisma {
     readonly proveedor: FieldRef<"productos", 'String'>
     readonly detalles: FieldRef<"productos", 'String'>
     readonly atributos: FieldRef<"productos", 'Json'>
+    readonly img: FieldRef<"productos", 'String'>
+    readonly fechaPrecioVenta: FieldRef<"productos", 'String'>
+    readonly fecha: FieldRef<"productos", 'DateTime'>
   }
     
 
@@ -2983,7 +3016,10 @@ export namespace Prisma {
     stock: 'stock',
     proveedor: 'proveedor',
     detalles: 'detalles',
-    atributos: 'atributos'
+    atributos: 'atributos',
+    img: 'img',
+    fechaPrecioVenta: 'fechaPrecioVenta',
+    fecha: 'fecha'
   };
 
   export type ProductosScalarFieldEnum = (typeof ProductosScalarFieldEnum)[keyof typeof ProductosScalarFieldEnum]
@@ -3234,6 +3270,9 @@ export namespace Prisma {
     proveedor?: StringNullableFilter<"productos"> | string | null
     detalles?: StringNullableFilter<"productos"> | string | null
     atributos?: JsonNullableFilter<"productos">
+    img?: StringNullableFilter<"productos"> | string | null
+    fechaPrecioVenta?: StringNullableFilter<"productos"> | string | null
+    fecha?: DateTimeNullableFilter<"productos"> | Date | string | null
   }
 
   export type productosOrderByWithRelationInput = {
@@ -3247,6 +3286,9 @@ export namespace Prisma {
     proveedor?: SortOrder
     detalles?: SortOrder
     atributos?: SortOrder
+    img?: SortOrder
+    fechaPrecioVenta?: SortOrder
+    fecha?: SortOrder
   }
 
   export type productosWhereUniqueInput = Prisma.AtLeast<{
@@ -3263,6 +3305,9 @@ export namespace Prisma {
     proveedor?: StringNullableFilter<"productos"> | string | null
     detalles?: StringNullableFilter<"productos"> | string | null
     atributos?: JsonNullableFilter<"productos">
+    img?: StringNullableFilter<"productos"> | string | null
+    fechaPrecioVenta?: StringNullableFilter<"productos"> | string | null
+    fecha?: DateTimeNullableFilter<"productos"> | Date | string | null
   }, "id">
 
   export type productosOrderByWithAggregationInput = {
@@ -3276,6 +3321,9 @@ export namespace Prisma {
     proveedor?: SortOrder
     detalles?: SortOrder
     atributos?: SortOrder
+    img?: SortOrder
+    fechaPrecioVenta?: SortOrder
+    fecha?: SortOrder
     _count?: productosCountOrderByAggregateInput
     _avg?: productosAvgOrderByAggregateInput
     _max?: productosMaxOrderByAggregateInput
@@ -3297,6 +3345,9 @@ export namespace Prisma {
     proveedor?: StringNullableWithAggregatesFilter<"productos"> | string | null
     detalles?: StringNullableWithAggregatesFilter<"productos"> | string | null
     atributos?: JsonNullableWithAggregatesFilter<"productos">
+    img?: StringNullableWithAggregatesFilter<"productos"> | string | null
+    fechaPrecioVenta?: StringNullableWithAggregatesFilter<"productos"> | string | null
+    fecha?: DateTimeNullableWithAggregatesFilter<"productos"> | Date | string | null
   }
 
   export type serviciosCreateInput = {
@@ -3488,6 +3539,9 @@ export namespace Prisma {
     proveedor?: string | null
     detalles?: string | null
     atributos?: InputJsonValue | null
+    img?: string | null
+    fechaPrecioVenta?: string | null
+    fecha?: Date | string | null
   }
 
   export type productosUncheckedCreateInput = {
@@ -3501,6 +3555,9 @@ export namespace Prisma {
     proveedor?: string | null
     detalles?: string | null
     atributos?: InputJsonValue | null
+    img?: string | null
+    fechaPrecioVenta?: string | null
+    fecha?: Date | string | null
   }
 
   export type productosUpdateInput = {
@@ -3513,6 +3570,9 @@ export namespace Prisma {
     proveedor?: NullableStringFieldUpdateOperationsInput | string | null
     detalles?: NullableStringFieldUpdateOperationsInput | string | null
     atributos?: InputJsonValue | InputJsonValue | null
+    img?: NullableStringFieldUpdateOperationsInput | string | null
+    fechaPrecioVenta?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type productosUncheckedUpdateInput = {
@@ -3525,6 +3585,9 @@ export namespace Prisma {
     proveedor?: NullableStringFieldUpdateOperationsInput | string | null
     detalles?: NullableStringFieldUpdateOperationsInput | string | null
     atributos?: InputJsonValue | InputJsonValue | null
+    img?: NullableStringFieldUpdateOperationsInput | string | null
+    fechaPrecioVenta?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type productosCreateManyInput = {
@@ -3538,6 +3601,9 @@ export namespace Prisma {
     proveedor?: string | null
     detalles?: string | null
     atributos?: InputJsonValue | null
+    img?: string | null
+    fechaPrecioVenta?: string | null
+    fecha?: Date | string | null
   }
 
   export type productosUpdateManyMutationInput = {
@@ -3550,6 +3616,9 @@ export namespace Prisma {
     proveedor?: NullableStringFieldUpdateOperationsInput | string | null
     detalles?: NullableStringFieldUpdateOperationsInput | string | null
     atributos?: InputJsonValue | InputJsonValue | null
+    img?: NullableStringFieldUpdateOperationsInput | string | null
+    fechaPrecioVenta?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type productosUncheckedUpdateManyInput = {
@@ -3562,6 +3631,9 @@ export namespace Prisma {
     proveedor?: NullableStringFieldUpdateOperationsInput | string | null
     detalles?: NullableStringFieldUpdateOperationsInput | string | null
     atributos?: InputJsonValue | InputJsonValue | null
+    img?: NullableStringFieldUpdateOperationsInput | string | null
+    fechaPrecioVenta?: NullableStringFieldUpdateOperationsInput | string | null
+    fecha?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -3810,6 +3882,9 @@ export namespace Prisma {
     proveedor?: SortOrder
     detalles?: SortOrder
     atributos?: SortOrder
+    img?: SortOrder
+    fechaPrecioVenta?: SortOrder
+    fecha?: SortOrder
   }
 
   export type productosAvgOrderByAggregateInput = {
@@ -3825,6 +3900,9 @@ export namespace Prisma {
     precioCompra?: SortOrder
     proveedor?: SortOrder
     detalles?: SortOrder
+    img?: SortOrder
+    fechaPrecioVenta?: SortOrder
+    fecha?: SortOrder
   }
 
   export type productosMinOrderByAggregateInput = {
@@ -3835,6 +3913,9 @@ export namespace Prisma {
     precioCompra?: SortOrder
     proveedor?: SortOrder
     detalles?: SortOrder
+    img?: SortOrder
+    fechaPrecioVenta?: SortOrder
+    fecha?: SortOrder
   }
 
   export type productosSumOrderByAggregateInput = {

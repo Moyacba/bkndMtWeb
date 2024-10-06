@@ -117,6 +117,7 @@ Prisma.NullTypes = {
 
 exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
+  barcode: 'barcode',
   sku: 'sku',
   name: 'name',
   description: 'description',
@@ -129,7 +130,9 @@ exports.Prisma.ProductScalarFieldEnum = {
   percentPrice: 'percentPrice',
   stock: 'stock',
   images: 'images',
-  specifications: 'specifications'
+  specifications: 'specifications',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.CustomerScalarFieldEnum = {

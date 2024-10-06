@@ -46,12 +46,19 @@ const paymentManager = async (cashflowId, payments, transactionType) => {
 // Obtener todos los cashflows
 export const getCashflows = async (req, res) => {
   try {
+    const pageSize = 10;
+    const page = parseInt(req.query.page) || 1;
+
     const cashflows = await prisma.cashflow.findMany({
-      orderBy: { openDate: "desc" },
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+      orderBy: {
+        openDate: "desc",
+      },
     });
+
     res.status(200).json(cashflows);
-  } catch (error) {
-    console.log(error);
+  } catch (err) {
     res.status(500).json({ error: "Error fetching cashflows" });
   }
 };

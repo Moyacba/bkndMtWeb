@@ -5,10 +5,21 @@ const prisma = new PrismaClient();
 // Obtener todos los servicios
 export const getServices = async (req, res) => {
   try {
-    const services = await prisma.service.findMany();
+    const pageSize = 10;
+    const page = parseInt(req.query.page) || 1;
+
+    const services = await prisma.service.findMany({
+      skip: (page - 1) * pageSize,
+      take: pageSize,
+      orderBy: {
+        date: "desc",
+      },
+    });
+
     res.status(201).json(services);
-  } catch (error) {
-    res.status(501).json({ error: "Error fetching services" });
+  } catch (err) {
+    console.log(err)
+    res.status(500).json({ error: "Error fetching services ", err });
   }
 };
 

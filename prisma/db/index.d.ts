@@ -1371,6 +1371,7 @@ export namespace Prisma {
 
   export type ProductMinAggregateOutputType = {
     id: string | null
+    barcode: string | null
     sku: string | null
     name: string | null
     description: string | null
@@ -1382,10 +1383,13 @@ export namespace Prisma {
     promoPrice: number | null
     percentPrice: number | null
     stock: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ProductMaxAggregateOutputType = {
     id: string | null
+    barcode: string | null
     sku: string | null
     name: string | null
     description: string | null
@@ -1397,10 +1401,13 @@ export namespace Prisma {
     promoPrice: number | null
     percentPrice: number | null
     stock: number | null
+    createdAt: Date | null
+    updatedAt: Date | null
   }
 
   export type ProductCountAggregateOutputType = {
     id: number
+    barcode: number
     sku: number
     name: number
     description: number
@@ -1414,6 +1421,8 @@ export namespace Prisma {
     stock: number
     images: number
     specifications: number
+    createdAt: number
+    updatedAt: number
     _all: number
   }
 
@@ -1436,6 +1445,7 @@ export namespace Prisma {
 
   export type ProductMinAggregateInputType = {
     id?: true
+    barcode?: true
     sku?: true
     name?: true
     description?: true
@@ -1447,10 +1457,13 @@ export namespace Prisma {
     promoPrice?: true
     percentPrice?: true
     stock?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ProductMaxAggregateInputType = {
     id?: true
+    barcode?: true
     sku?: true
     name?: true
     description?: true
@@ -1462,10 +1475,13 @@ export namespace Prisma {
     promoPrice?: true
     percentPrice?: true
     stock?: true
+    createdAt?: true
+    updatedAt?: true
   }
 
   export type ProductCountAggregateInputType = {
     id?: true
+    barcode?: true
     sku?: true
     name?: true
     description?: true
@@ -1479,6 +1495,8 @@ export namespace Prisma {
     stock?: true
     images?: true
     specifications?: true
+    createdAt?: true
+    updatedAt?: true
     _all?: true
   }
 
@@ -1570,6 +1588,7 @@ export namespace Prisma {
 
   export type ProductGroupByOutputType = {
     id: string
+    barcode: string | null
     sku: string
     name: string
     description: string
@@ -1583,6 +1602,8 @@ export namespace Prisma {
     stock: number
     images: string[]
     specifications: JsonValue | null
+    createdAt: Date | null
+    updatedAt: Date | null
     _count: ProductCountAggregateOutputType | null
     _avg: ProductAvgAggregateOutputType | null
     _sum: ProductSumAggregateOutputType | null
@@ -1606,6 +1627,7 @@ export namespace Prisma {
 
   export type ProductSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    barcode?: boolean
     sku?: boolean
     name?: boolean
     description?: boolean
@@ -1619,11 +1641,14 @@ export namespace Prisma {
     stock?: boolean
     images?: boolean
     specifications?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }, ExtArgs["result"]["product"]>
 
 
   export type ProductSelectScalar = {
     id?: boolean
+    barcode?: boolean
     sku?: boolean
     name?: boolean
     description?: boolean
@@ -1637,6 +1662,8 @@ export namespace Prisma {
     stock?: boolean
     images?: boolean
     specifications?: boolean
+    createdAt?: boolean
+    updatedAt?: boolean
   }
 
 
@@ -1645,6 +1672,7 @@ export namespace Prisma {
     objects: {}
     scalars: $Extensions.GetPayloadResult<{
       id: string
+      barcode: string | null
       sku: string
       name: string
       description: string
@@ -1658,6 +1686,8 @@ export namespace Prisma {
       stock: number
       images: string[]
       specifications: Prisma.JsonValue | null
+      createdAt: Date | null
+      updatedAt: Date | null
     }, ExtArgs["result"]["product"]>
     composites: {}
   }
@@ -2051,6 +2081,7 @@ export namespace Prisma {
    */ 
   interface ProductFieldRefs {
     readonly id: FieldRef<"Product", 'String'>
+    readonly barcode: FieldRef<"Product", 'String'>
     readonly sku: FieldRef<"Product", 'String'>
     readonly name: FieldRef<"Product", 'String'>
     readonly description: FieldRef<"Product", 'String'>
@@ -2064,6 +2095,8 @@ export namespace Prisma {
     readonly stock: FieldRef<"Product", 'Int'>
     readonly images: FieldRef<"Product", 'String[]'>
     readonly specifications: FieldRef<"Product", 'Json'>
+    readonly createdAt: FieldRef<"Product", 'DateTime'>
+    readonly updatedAt: FieldRef<"Product", 'DateTime'>
   }
     
 
@@ -8055,6 +8088,7 @@ export namespace Prisma {
 
   export const ProductScalarFieldEnum: {
     id: 'id',
+    barcode: 'barcode',
     sku: 'sku',
     name: 'name',
     description: 'description',
@@ -8067,7 +8101,9 @@ export namespace Prisma {
     percentPrice: 'percentPrice',
     stock: 'stock',
     images: 'images',
-    specifications: 'specifications'
+    specifications: 'specifications',
+    createdAt: 'createdAt',
+    updatedAt: 'updatedAt'
   };
 
   export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
@@ -8261,6 +8297,7 @@ export namespace Prisma {
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
     id?: StringFilter<"Product"> | string
+    barcode?: StringNullableFilter<"Product"> | string | null
     sku?: StringFilter<"Product"> | string
     name?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
@@ -8274,10 +8311,13 @@ export namespace Prisma {
     stock?: IntFilter<"Product"> | number
     images?: StringNullableListFilter<"Product">
     specifications?: JsonNullableFilter<"Product">
+    createdAt?: DateTimeNullableFilter<"Product"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
   }
 
   export type ProductOrderByWithRelationInput = {
     id?: SortOrder
+    barcode?: SortOrder
     sku?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -8291,6 +8331,8 @@ export namespace Prisma {
     stock?: SortOrder
     images?: SortOrder
     specifications?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ProductWhereUniqueInput = Prisma.AtLeast<{
@@ -8298,6 +8340,7 @@ export namespace Prisma {
     AND?: ProductWhereInput | ProductWhereInput[]
     OR?: ProductWhereInput[]
     NOT?: ProductWhereInput | ProductWhereInput[]
+    barcode?: StringNullableFilter<"Product"> | string | null
     sku?: StringFilter<"Product"> | string
     name?: StringFilter<"Product"> | string
     description?: StringFilter<"Product"> | string
@@ -8311,10 +8354,13 @@ export namespace Prisma {
     stock?: IntFilter<"Product"> | number
     images?: StringNullableListFilter<"Product">
     specifications?: JsonNullableFilter<"Product">
+    createdAt?: DateTimeNullableFilter<"Product"> | Date | string | null
+    updatedAt?: DateTimeNullableFilter<"Product"> | Date | string | null
   }, "id">
 
   export type ProductOrderByWithAggregationInput = {
     id?: SortOrder
+    barcode?: SortOrder
     sku?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -8328,6 +8374,8 @@ export namespace Prisma {
     stock?: SortOrder
     images?: SortOrder
     specifications?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
     _count?: ProductCountOrderByAggregateInput
     _avg?: ProductAvgOrderByAggregateInput
     _max?: ProductMaxOrderByAggregateInput
@@ -8340,6 +8388,7 @@ export namespace Prisma {
     OR?: ProductScalarWhereWithAggregatesInput[]
     NOT?: ProductScalarWhereWithAggregatesInput | ProductScalarWhereWithAggregatesInput[]
     id?: StringWithAggregatesFilter<"Product"> | string
+    barcode?: StringNullableWithAggregatesFilter<"Product"> | string | null
     sku?: StringWithAggregatesFilter<"Product"> | string
     name?: StringWithAggregatesFilter<"Product"> | string
     description?: StringWithAggregatesFilter<"Product"> | string
@@ -8353,6 +8402,8 @@ export namespace Prisma {
     stock?: IntWithAggregatesFilter<"Product"> | number
     images?: StringNullableListFilter<"Product">
     specifications?: JsonNullableWithAggregatesFilter<"Product">
+    createdAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
+    updatedAt?: DateTimeNullableWithAggregatesFilter<"Product"> | Date | string | null
   }
 
   export type CustomerWhereInput = {
@@ -8792,6 +8843,7 @@ export namespace Prisma {
 
   export type ProductCreateInput = {
     id?: string
+    barcode?: string | null
     sku: string
     name: string
     description: string
@@ -8805,10 +8857,13 @@ export namespace Prisma {
     stock: number
     images?: ProductCreateimagesInput | string[]
     specifications?: InputJsonValue | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
   }
 
   export type ProductUncheckedCreateInput = {
     id?: string
+    barcode?: string | null
     sku: string
     name: string
     description: string
@@ -8822,9 +8877,12 @@ export namespace Prisma {
     stock: number
     images?: ProductCreateimagesInput | string[]
     specifications?: InputJsonValue | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
   }
 
   export type ProductUpdateInput = {
+    barcode?: NullableStringFieldUpdateOperationsInput | string | null
     sku?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -8838,9 +8896,12 @@ export namespace Prisma {
     stock?: IntFieldUpdateOperationsInput | number
     images?: ProductUpdateimagesInput | string[]
     specifications?: InputJsonValue | InputJsonValue | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProductUncheckedUpdateInput = {
+    barcode?: NullableStringFieldUpdateOperationsInput | string | null
     sku?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -8854,10 +8915,13 @@ export namespace Prisma {
     stock?: IntFieldUpdateOperationsInput | number
     images?: ProductUpdateimagesInput | string[]
     specifications?: InputJsonValue | InputJsonValue | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProductCreateManyInput = {
     id?: string
+    barcode?: string | null
     sku: string
     name: string
     description: string
@@ -8871,9 +8935,12 @@ export namespace Prisma {
     stock: number
     images?: ProductCreateimagesInput | string[]
     specifications?: InputJsonValue | null
+    createdAt?: Date | string | null
+    updatedAt?: Date | string | null
   }
 
   export type ProductUpdateManyMutationInput = {
+    barcode?: NullableStringFieldUpdateOperationsInput | string | null
     sku?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -8887,9 +8954,12 @@ export namespace Prisma {
     stock?: IntFieldUpdateOperationsInput | number
     images?: ProductUpdateimagesInput | string[]
     specifications?: InputJsonValue | InputJsonValue | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type ProductUncheckedUpdateManyInput = {
+    barcode?: NullableStringFieldUpdateOperationsInput | string | null
     sku?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
     description?: StringFieldUpdateOperationsInput | string
@@ -8903,6 +8973,8 @@ export namespace Prisma {
     stock?: IntFieldUpdateOperationsInput | number
     images?: ProductUpdateimagesInput | string[]
     specifications?: InputJsonValue | InputJsonValue | null
+    createdAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updatedAt?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type CustomerCreateInput = {
@@ -9393,6 +9465,22 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type StringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    isSet?: boolean
+  }
+
   export type FloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -9435,8 +9523,21 @@ export namespace Prisma {
     isSet?: boolean
   }
 
+  export type DateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    isSet?: boolean
+  }
+
   export type ProductCountOrderByAggregateInput = {
     id?: SortOrder
+    barcode?: SortOrder
     sku?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -9450,6 +9551,8 @@ export namespace Prisma {
     stock?: SortOrder
     images?: SortOrder
     specifications?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ProductAvgOrderByAggregateInput = {
@@ -9462,6 +9565,7 @@ export namespace Prisma {
 
   export type ProductMaxOrderByAggregateInput = {
     id?: SortOrder
+    barcode?: SortOrder
     sku?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -9473,10 +9577,13 @@ export namespace Prisma {
     promoPrice?: SortOrder
     percentPrice?: SortOrder
     stock?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ProductMinOrderByAggregateInput = {
     id?: SortOrder
+    barcode?: SortOrder
     sku?: SortOrder
     name?: SortOrder
     description?: SortOrder
@@ -9488,6 +9595,8 @@ export namespace Prisma {
     promoPrice?: SortOrder
     percentPrice?: SortOrder
     stock?: SortOrder
+    createdAt?: SortOrder
+    updatedAt?: SortOrder
   }
 
   export type ProductSumOrderByAggregateInput = {
@@ -9514,6 +9623,25 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    mode?: QueryMode
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+    isSet?: boolean
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -9560,6 +9688,21 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedJsonNullableFilter<$PrismaModel>
     _max?: NestedJsonNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
     isSet?: boolean
   }
   export type JsonFilter<$PrismaModel = never> = 
@@ -9682,22 +9825,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-    isSet?: boolean
-  }
-
   export type IntNullableFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -9753,25 +9880,6 @@ export namespace Prisma {
     categoryId?: SortOrder
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -9792,18 +9900,6 @@ export namespace Prisma {
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
-  }
-
-  export type DateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-    isSet?: boolean
   }
 
   export type CashflowCountOrderByAggregateInput = {
@@ -9877,21 +9973,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-    isSet?: boolean
   }
 
   export type UserCountOrderByAggregateInput = {
@@ -9997,6 +10078,11 @@ export namespace Prisma {
     set: string[]
   }
 
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
+    unset?: boolean
+  }
+
   export type StringFieldUpdateOperationsInput = {
     set?: string
   }
@@ -10022,6 +10108,11 @@ export namespace Prisma {
     push?: string | string[]
   }
 
+  export type NullableDateTimeFieldUpdateOperationsInput = {
+    set?: Date | string | null
+    unset?: boolean
+  }
+
   export type CustomerCreatepurchaseHistoryInput = {
     set: string[]
   }
@@ -10044,11 +10135,6 @@ export namespace Prisma {
     set?: Date | string
   }
 
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-    unset?: boolean
-  }
-
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -10060,11 +10146,6 @@ export namespace Prisma {
 
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
-  }
-
-  export type NullableDateTimeFieldUpdateOperationsInput = {
-    set?: Date | string | null
-    unset?: boolean
   }
 
   export type NullableFloatFieldUpdateOperationsInput = {
@@ -10090,6 +10171,21 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type NestedStringNullableFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableFilter<$PrismaModel> | string | null
+    isSet?: boolean
+  }
+
   export type NestedFloatFilter<$PrismaModel = never> = {
     equals?: number | FloatFieldRefInput<$PrismaModel>
     in?: number[] | ListFloatFieldRefInput<$PrismaModel>
@@ -10112,6 +10208,18 @@ export namespace Prisma {
     not?: NestedIntFilter<$PrismaModel> | number
   }
 
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+    isSet?: boolean
+  }
+
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -10127,6 +10235,36 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+    isSet?: boolean
+  }
+
+  export type NestedIntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+    isSet?: boolean
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -10160,18 +10298,6 @@ export namespace Prisma {
     _min?: NestedIntFilter<$PrismaModel>
     _max?: NestedIntFilter<$PrismaModel>
   }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-    isSet?: boolean
-  }
   export type NestedJsonNullableFilter<$PrismaModel = never> = 
     | PatchUndefined<
         Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
@@ -10182,6 +10308,21 @@ export namespace Prisma {
   export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
     equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
     not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    isSet?: boolean
+  }
+
+  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedDateTimeNullableFilter<$PrismaModel>
+    _max?: NestedDateTimeNullableFilter<$PrismaModel>
     isSet?: boolean
   }
   export type NestedJsonFilter<$PrismaModel = never> = 
@@ -10221,39 +10362,6 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-    isSet?: boolean
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-    isSet?: boolean
-  }
-
   export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel> | null
     in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
@@ -10288,39 +10396,12 @@ export namespace Prisma {
     not?: NestedBoolFilter<$PrismaModel> | boolean
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
-    isSet?: boolean
-  }
-
   export type NestedBoolWithAggregatesFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolWithAggregatesFilter<$PrismaModel> | boolean
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel> | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableWithAggregatesFilter<$PrismaModel> | Date | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedDateTimeNullableFilter<$PrismaModel>
-    _max?: NestedDateTimeNullableFilter<$PrismaModel>
-    isSet?: boolean
   }
 
   export type NestedFloatNullableWithAggregatesFilter<$PrismaModel = never> = {
