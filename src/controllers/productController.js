@@ -9,10 +9,10 @@ export const getProducts = async (req, res) => {
     const keyword = req.query.keyword || "";
     let products;
     console.log(keyword);
-    console.log((keyword).split(" ")[0].length);
+    console.log(keyword.split(" ")[0].length);
 
     if (keyword !== "") {
-      if ((keyword).split(" ").length > 1) {
+      if (keyword.split(" ").length > 1) {
         products = await prisma.product.aggregateRaw({
           pipeline: [
             {
@@ -20,7 +20,7 @@ export const getProducts = async (req, res) => {
                 $or: [
                   {
                     name: {
-                      $regex: `.*${(keyword).split(" ")[0]}.*`,
+                      $regex: `.*${keyword.split(" ")[0]}.*`,
                       $options: "i",
                     },
                   },
@@ -28,7 +28,7 @@ export const getProducts = async (req, res) => {
                 $or: [
                   {
                     name: {
-                      $regex: `.*${(keyword).split(" ")[0]}.*`,
+                      $regex: `.*${keyword.split(" ")[0]}.*`,
                       $options: "i",
                     },
                   },
