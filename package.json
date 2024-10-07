@@ -9,7 +9,7 @@
     "generate:db": "prisma generate --schema=./prisma/schema.prisma",
     "generate:dbOld": "prisma generate --schema=./prisma/schemaOld.prisma",
     "build": "pnpm run generate:db && pnpm run generate:dbOld",
-    "mongodb:init": "pnpx prisma db push --force-reset --schema=./prisma/schema.prisma && --schema=./prisma/schemaOld.prisma && pnpx prisma db seed"
+    "mongodb:init": "pnpx prisma db push --skip-generate --schema=./prisma/schema.prisma && --schema=./prisma/schemaOld.prisma"
   },
   "keywords": [],
   "author": "",
