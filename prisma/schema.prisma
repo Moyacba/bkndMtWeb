@@ -31,8 +31,6 @@ model Product {
   specifications Json?
   createdAt      DateTime?
   updatedAt      DateTime?
-
-  @@index([brand, name], map: "product_search_index")
 }
 
 // Model for a customer
@@ -112,6 +110,4 @@ model Service {
   dateOut  DateTime?
   payments Json?
   discount Float?
-
-  @@index([client, device], map: "service_search_index")
 }
