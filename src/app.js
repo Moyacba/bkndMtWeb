@@ -11,13 +11,7 @@ dotenv.config();
 
 const app = express();
 // app.use(cors());
-app.use(
-  cors({
-    // origin: "http://localhost:5173",
-    origin: "https://modotecnoweb.netlify.app",
-    credentials: true,
-  })
-);
+app.use(cors());
 // Middlewares globales
 app.use(cookieParser());
 app.use(helmet());
