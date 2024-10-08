@@ -8,47 +8,8 @@ export const getProducts = async (req, res) => {
     const page = parseInt(req.query.page) || 1;
     const keyword = req.query.keyword || "";
     let products;
-    console.log(keyword);
-    console.log(keyword.split(" ")[0].length);
 
-    if (keyword !== "") {
-      if (keyword.split(" ").length > 1) {
-        products = await prisma.product.aggregateRaw({
-          pipeline: [
-            {
-              $match: {
-                $or: [
-                  {
-                    name: {
-                      $regex: `.*${keyword.split(" ")[0]}.*`,
-                      $options: "i",
-                    },
-                  },
-                ],
-                $or: [
-                  {
-                    name: {
-                      $regex: `.*${keyword.split(" ")[0]}.*`,
-                      $options: "i",
-                    },
-                  },
-                ],
-              },
-            },
-          ],
-        });
-      } else {
-        products = await prisma.product.aggregateRaw({
-          pipeline: [
-            {
-              $match: {
-                $or: [{ name: { $regex: `.*${keyword}.*`, $options: "i" } }],
-              },
-            },
-          ],
-        });
-      }
-    } else {
+    if (keyword === "") {
       products = await prisma.product.findMany({
         skip: (page - 1) * pageSize,
         take: pageSize,
@@ -56,9 +17,51 @@ export const getProducts = async (req, res) => {
           createdAt: "desc",
         },
       });
+      return res.status(200).json(products);
     }
 
-    res.status(200).json(products);
+    const arrayKeyword = keyword.split(" ");
+    const arrayParKeyword = [];
+    const searching = [];
+
+    if (arrayKeyword.length > 1) {
+      for (let i = 0; i < arrayKeyword.length - 1; i++) {
+        arrayParKeyword.push(`${arrayKeyword[i]} ${arrayKeyword[i + 1]}`);
+      }
+    }
+
+    for (const key of arrayKeyword) {
+      searching.push({ name: { contains: key, mode: "insensitive" } });
+    }
+
+    products = await prisma.product.findMany({
+      where: {
+        OR: searching,
+      },
+    });
+
+    const orderByRelevance = products
+      .map((product) => {
+        const productName = product.name.toLowerCase();
+        let matchs = 0;
+
+        for (const key of arrayKeyword) {
+          if (productName.includes(key.toLowerCase())) {
+            matchs++;
+          }
+        }
+
+        for (const par of arrayParKeyword) {
+          if (productName.includes(par.toLowerCase())) {
+            matchs++;
+          }
+        }
+
+        return { ...product, matchs };
+      })
+      .sort((a, b) => b.matchs - a.matchs);
+
+    res.status(200).json(orderByRelevance.slice(0, pageSize));
   } catch (err) {
     console.log(err);
     res.status(500).json({ error: "Error fetching products" });
@@ -133,7 +136,6 @@ export const createProduct = async (req, res) => {
 // Actualizar un producto
 export const updateProduct = async (req, res) => {
   const { id } = req.params;
-  console.log(req.body);
   const {
     updatedAt,
     barcode,

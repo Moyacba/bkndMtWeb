@@ -63,7 +63,7 @@ export const createSale = async (req, res) => {
     });
     products.map(async (product) => {
       await prisma.product.update({
-        where: { id: product._id.$oid },
+        where: { id: product.id },
         data: {
           stock: { decrement: 1 },
         },

@@ -56,6 +56,7 @@ export const createExpense = async (req, res) => {
     });
     res.status(201).json(newExpense);
   } catch (error) {
+    console.log(error);
     res.status(500).json({ error: "Error creating expense" });
   }
 };

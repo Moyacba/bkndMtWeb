@@ -18,7 +18,7 @@ export const getServices = async (req, res) => {
 
     res.status(201).json(services);
   } catch (err) {
-    console.log(err)
+    console.log(err);
     res.status(500).json({ error: "Error fetching services ", err });
   }
 };
@@ -46,19 +46,10 @@ export const getServiceByQuery = async (req, res) => {
   }
 
   try {
-    const resultados = await prisma.service.aggregateRaw({
-      pipeline: [
-        {
-          $match: {
-            $or: [
-              { "device.model": { $regex: keyword, $options: "i" } },
-              { "client.name": { $regex: keyword, $options: "i" } },
-              { "client.phone1": { $regex: keyword, $options: "i" } },
-              { "client.phone2": { $regex: keyword, $options: "i" } },
-            ],
-          },
-        },
-      ],
+    const resultados = await prisma.service.findMany({
+      where: {
+        device: { contains: keyword, mode: "insensitive" },
+      },
     });
 
     res.json(resultados);

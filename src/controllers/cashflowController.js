@@ -138,39 +138,18 @@ export const addPayment = async (req, res) => {
 // Actualizar un cashflow
 export const updateCashflow = async (req, res) => {
   const { id } = req.params;
-  const {
-    active,
-    openDate,
-    closeDate,
-    openingBalance,
-    total,
-    expenses,
-    cashSales,
-    cashServices,
-    digitalSales,
-    digitalServices,
-    observations,
-  } = req.body;
-
+  const { expenses } = req.body;
+  console.log(expenses);
   try {
     const updatedCashflow = await prisma.cashflow.update({
       where: { id },
       data: {
-        active,
-        openDate,
-        closeDate,
-        openingBalance,
-        total,
-        expenses,
-        cashSales,
-        cashServices,
-        digitalSales,
-        digitalServices,
-        observations,
+        expenses: { increment: expenses },
       },
     });
-    res.status(200).json(updatedCashflow);
+    res.status(201).json(updatedCashflow);
   } catch (error) {
+    console.log(error);
     if (error.code === "P2025") {
       // Cashflow not found
       return res.status(404).json({ error: "Cashflow not found" });
