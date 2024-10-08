@@ -13,8 +13,9 @@ const app = express();
 // app.use(cors());
 app.use(
   cors({
-    origin: "https://modotecnoweb.netlify.app",
-    // credentials: true,
+    origin: "http://localhost:5173",
+    // origin: "https://modotecnoweb.netlify.app",
+    credentials: true,
   })
 );
 // Middlewares globales
