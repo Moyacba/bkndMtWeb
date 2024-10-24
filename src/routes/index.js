@@ -7,6 +7,7 @@ import customerRoutes from "./customerRoutes.js";
 import expenseRoutes from "./expenseRoutes.js";
 import serviceRoutes from "./serviceRoutes.js";
 import adapterRoutes from "../adapter/adapterRoutes.js";
+import cloudinaryRoutes from "./cloudinaryRoutes.js";
 
 const router = Router();
 
@@ -18,5 +19,6 @@ router.use("/customer", customerRoutes);
 router.use("/expense", expenseRoutes);
 router.use("/service", serviceRoutes);
 router.use("/adapter", adapterRoutes);
+router.use("/image", cloudinaryRoutes);
 
 export default router;
