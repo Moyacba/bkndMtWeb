@@ -8,7 +8,7 @@ export const upload = multer({
 
 const uploadParams = {
   folder: "news",
-  transformation: [{ width: 500, height: 500, crop: "fill" }],
+  // transformation: [{ width: 500, height: 500, crop: "fill" }],
 };
 
 export const uploadImage = async (req, res) => {
