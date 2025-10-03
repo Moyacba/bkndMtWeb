@@ -6,23 +6,44 @@ import {
   createProduct,
   updateProduct,
   deleteProduct,
-} from "../controllers/productController.js";
+  validateStock,
+  getStockBatch,
+} from "../controllers/productController.js ";
+
+import {
+  getProductVariants,
+  getVariantById,
+  createVariant,
+  updateVariant,
+  deleteVariant,
+  searchVariants,
+} from "../controllers/productVariantController.js";
 
 const router = express.Router();
 
-// Obtener todos los productos
+// ========================================
+// RUTAS DE STOCK EN TIEMPO REAL (NUEVAS)
+// ========================================
+// IMPORTANTE: Estas rutas deben estar ANTES de las rutas con :id
+// para evitar que Express las confunda con parámetros dinámicos
+router.post("/validate-stock", validateStock);
+router.post("/stock-batch", getStockBatch);
+
+// ========================================
+// RUTAS DE PRODUCTOS PRINCIPALES
+// ========================================
 router.get("/", getProducts);
-
-// Obtener un producto por ID
 router.get("/:id", getProductById);
-
-// Crear un nuevo producto
 router.post("/", createProduct);
-
-// Actualizar un producto
 router.put("/:id", updateProduct);
-
-// Eliminar un producto
 router.delete("/:id", deleteProduct);
+
+// Rutas de variantes de productos
+router.get("/:productId/variants", getProductVariants);
+router.post("/:productId/variants", createVariant);
+router.get("/variants/search", searchVariants);
+router.get("/variants/:id", getVariantById);
+router.put("/variants/:id", updateVariant);
+router.delete("/variants/:id", deleteVariant);
 
 export default router;

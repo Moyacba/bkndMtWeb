@@ -6,9 +6,13 @@ import {
   createCustomer,
   updateCustomer,
   deleteCustomer,
+  searchCustomers,
 } from "../controllers/customerController.js";
 
 const router = express.Router();
+
+// Buscar clientes (debe ir antes de /:id para evitar conflictos)
+router.get("/search", searchCustomers);
 
 // Obtener todos los clientes
 router.get("/", getCustomers);

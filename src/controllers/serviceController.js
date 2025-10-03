@@ -87,7 +87,7 @@ export const createService = async (req, res) => {
 export const deliveryService = async (req, res) => {
   const { id } = req.params;
   const { state, payments, dateOut } = req.body;
-
+  console.log(state, payments, dateOut);
   try {
     const deliveryService = await prisma.service.update({
       where: { id },
@@ -113,7 +113,6 @@ export const updateService = async (req, res) => {
     repair,
     total,
     dateIn,
-    dateOut,
     payments,
     discount,
   } = req.body;
@@ -128,7 +127,6 @@ export const updateService = async (req, res) => {
         repair,
         total,
         dateIn,
-        dateOut,
         payments,
         discount,
       },

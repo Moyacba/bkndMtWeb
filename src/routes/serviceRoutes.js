@@ -26,6 +26,7 @@ router.post("/", createService);
 
 // Crear un nuevo servicio
 router.post("/delivery/:id", deliveryService);
+router.put("/delivery/:id", deliveryService);
 
 // Actualizar un servicio
 router.put("/:id", updateService);
