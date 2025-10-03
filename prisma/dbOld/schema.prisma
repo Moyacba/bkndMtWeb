@@ -35,6 +35,8 @@ model servicios {
   fechaEstado Json?
   fechaIn     DateTime?
   fechaOut    DateTime?
+
+  @@index([cliente, telefono1, marca], map: "old_service_search_index")
 }
 
 model productos {
@@ -51,4 +53,6 @@ model productos {
   img              String?
   fechaPrecioVenta String?
   fecha            DateTime?
+
+  @@index([producto], map: "old_product_search_index")
 }

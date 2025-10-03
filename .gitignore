@@ -1,51 +1,6 @@
-# Dependencias
 node_modules
-.pnpm-debug.log*
-
-# Variables de entorno
+# Keep environment variables out of version control
 .env
-.env.local
-.env.production.local
 
-# Archivos de sistema
-.DS_Store
-Thumbs.db
-
-# Logs
-logs
-*.log
-npm-debug.log*
-pnpm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Cache
-.cache/
-.parcel-cache/
-
-# Prisma
-prisma/migrations/migration_lock.toml
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-
-# Temporales
-tmp/
-temp/
-.tmp/
-
-# Deployments
-.netlify/
-.vercel/
-dist/
-build/
-
-# Coverage
-coverage/
-*.lcov
-
-# Documentación generada
-docs/build/
+# Local Netlify folder
+.netlify

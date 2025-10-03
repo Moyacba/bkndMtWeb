@@ -7,17 +7,10 @@
   "scripts": {
     "start": "node src/app.js",
     "dev": "nodemon src/app.js",
-    "generate:db": "npx prisma generate --schema=./prisma/schema.prisma",
-    "build": "pnpm run generate:db",
-    "postbuild": "echo 'Build completed successfully'",
-    "prebuild": "echo 'Starting build process...'",
-    "mongodb:init": "npx prisma db push --skip-generate --schema=./prisma/schema.prisma",
-    "deploy": "node deploy.js",
-    "start:prod": "NODE_ENV=production pnpm start",
-    "healthcheck": "node -e \"console.log('Health check passed')\"",
-    "lint": "echo 'Linting not configured yet'",
-    "test": "echo 'Tests not configured yet'",
-    "test:stock": "node test-stock-endpoints.js"
+    "generate:db": "prisma generate --schema=./prisma/schema.prisma",
+    "generate:dbOld": "prisma generate --schema=./prisma/schemaOld.prisma",
+    "build": "pnpm run generate:db && pnpm run generate:dbOld",
+    "mongodb:init": "pnpx prisma db push --skip-generate --schema=./prisma/schema.prisma && pnpx prisma db push --skip-generate --schema=./prisma/schemaOld.prisma"
   },
   "keywords": [],
   "author": "",
@@ -37,10 +30,10 @@
     "jsonwebtoken": "^9.0.2",
     "mercadopago": "^2.8.0",
     "mongoose": "^8.7.0",
-    "morgan": "^1.10.1",
     "multer": "1.4.5-lts.1"
   },
   "devDependencies": {
+    "morgan": "^1.10.0",
     "nodemon": "^3.1.7",
     "prisma": "^6.12.0"
   },

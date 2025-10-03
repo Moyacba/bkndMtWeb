@@ -16,6 +16,3 @@ export const verifyToken = (req, res, next) => {
     res.status(400).json({ message: "Token no válido" });
   }
 };
-
-// Alias para compatibilidad con rutas híbridas
-export const requireAuth = verifyToken;
